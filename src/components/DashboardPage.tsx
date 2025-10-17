@@ -5,7 +5,7 @@ import { supabase } from '../lib/supabase';
 // Importamos los íconos necesarios
 import { FaUserCircle, FaMoneyBillWave, FaLock, FaCalendarAlt, FaDollarSign } from 'react-icons/fa';
 
-// Importa tu imagen de logo. ASUME que está en 'src/assets/logo.png'
+// Importa tu imagen de logo. ASUME que está en 
 import Logo from '../assets/nexuslogo.png'; 
 
 // Definición de Tipos
@@ -81,7 +81,7 @@ export default function DashboardPage() {
     };
 
     fetchStudentData();
-  }, [studentId]);
+  }, [studentId, navigate]);
 
   // FUNCIÓN AUXILIAR PARA DETERMINAR LA CLASE DE ESTADO
   const getStatusClassName = (status: string) => {
@@ -91,9 +91,9 @@ export default function DashboardPage() {
     return 'status-default';
   };
 
-  if (loading) return <div className="loading-screen">Cargando datos...</div>;
-  if (error) return <div className="error-message">Error: {error}</div>;
-  if (!student) return <div className="error-message">No se pudo cargar el perfil.</div>;
+  if (loading) return <div className="loading-screen-glass">Cargando datos...</div>;
+  if (error) return <div className="error-message-glass">Error: {error}</div>;
+  if (!student) return <div className="error-message-glass">No se pudo cargar el perfil.</div>;
 
   // LÓGICA DE SALDO TOTAL
   const pendingPayments = payments.filter(p => p.estado.toUpperCase() === 'PENDIENTE');
@@ -105,52 +105,52 @@ export default function DashboardPage() {
 
 
   return (
-    <div className="dashboard-container">
-      <header className="dashboard-header">
+    <div className="dashboard-container-glass">
+      <header className="dashboard-header-glass">
           {/* LOGO Y TÍTULO */}
-          <div className="header-branding">
-              <img src={Logo} alt="Logo Academia" className="academy-logo" />
+          <div className="header-branding-glass">
+              <img src={Logo} alt="Logo Academia" className="academy-logo-glass" />
               <h1>Panel de Pagos</h1>
           </div>
         <button 
           onClick={() => navigate('/login')} 
-          className="logout-button"
+          className="logout-button-glass"
         >
           <FaLock style={{ marginRight: '8px' }}/> Cerrar Sesión
         </button>
       </header>
       
-      <div className="student-info-card">
-          {/* INFORMACIÓN DEL ESTUDIANTE (Corregido: sin **) */}
+      <div className="info-card-glass">
+          {/* INFORMACIÓN DEL ESTUDIANTE */}
           <p>
             <FaUserCircle style={{ marginRight: '10px' }} /> 
-            <span className="info-label">Estudiante:</span> 
-            <span className="student-detail">{student.nombre} {student.apellido}</span>
+            <span className="info-label-glass">Estudiante:</span> 
+            <span className="student-detail-glass">{student.nombre} {student.apellido}</span>
           </p>
           <p>
             <FaDollarSign style={{ marginRight: '10px' }} /> 
-            <span className="info-label">Código Único:</span> 
-            <span className="student-detail">{student.id}</span>
+            <span className="info-label-glass">Código Único:</span> 
+            <span className="student-detail-glass">{student.id}</span>
           </p>
       </div>
 
       {/* PANEL DE SALDO TOTAL */}
-      <div className="total-saldo-card">
-          <h2 className="total-saldo-title"><FaMoneyBillWave style={{ marginRight: '10px' }} /> Saldo Total Pendiente</h2>
+      <div className="balance-card-glass">
+          <h2 className="total-saldo-title-glass"><FaMoneyBillWave style={{ marginRight: '10px' }} /> Saldo Total Pendiente</h2>
           {hasPending ? (
-              <p className="total-saldo-amount pending-amount">
+              <p className="saldo-amount-glass pending-amount-glass">
                   {formattedTotalPending}
               </p>
           ) : (
-              <p className="total-saldo-amount paid-amount">
+              <p className="saldo-amount-glass paid-amount-glass">
                   ¡CERO ADEUDO!
               </p>
           )}
       </div>
 
-      <div className="history-section">
-        <h2>Historial de Pagos</h2>
-        <table className="payments-table">
+      <div className="history-section-glass">
+        <h2 className="history-title-glass">Historial de Pagos</h2>
+        <table className="payments-table-glass">
           <thead>
             <tr>
               <th>Mes</th>
@@ -163,7 +163,7 @@ export default function DashboardPage() {
             {payments.length > 0 ? (
               payments.map((p, index) => ( 
                 <tr key={index} className={p.estado.toUpperCase() === 'PENDIENTE' ? 'row-pending' : ''}>
-                    <td><FaCalendarAlt style={{ marginRight: '8px', color: '#007bff' }} /> {p.mes}</td>
+                    <td><FaCalendarAlt style={{ marginRight: '8px', color: '#8a2be2' }} /> {p.mes}</td>
                     <td>{formatDate(p.fecha_pago)}</td> 
                     <td>{formatCurrency(p.monto_debido)}</td>
                     <td>
@@ -175,7 +175,7 @@ export default function DashboardPage() {
               ))
             ) : (
               <tr>
-                <td colSpan={4} className="no-records">No hay registros de pagos.</td>
+                <td colSpan={4} className="no-records-glass">No hay registros de pagos.</td>
               </tr>
             )}
           </tbody>

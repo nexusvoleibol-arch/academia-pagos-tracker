@@ -1,201 +1,502 @@
-/* --- GENERAL RESET & FONTS --- */
+/* --- ESTILOS GLOBAL / RESET --- */
 body {
-    background-color: #f4f7f9; /* Fondo muy claro */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Fondo Degradado Púrpura para todo (Login y Dashboard) */
+    background: linear-gradient(135deg, #4b0082 0%, #8a2be2 100%);
+    color: white; /* Color de texto por defecto blanco */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinea el contenido arriba, permitiendo scroll si es necesario */
+}
+
+/* ----------------------------------------------------
+   --- ESTILOS DE LOGIN: GLASSMORPHISM PÚRPURA ---
+   ---------------------------------------------------- */
+
+.login-page-container {
+    display: flex;
+    min-height: 100vh;
+    /* Usamos el fondo del body */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    filter: blur(0); 
+}
+
+/* El contenedor de la tarjeta (ambas secciones) */
+.login-illustration-section, .login-form-section {
+    height: 600px; 
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); 
+}
+
+/* SECCIÓN IZQUIERDA: BIENVENIDOS Y FONDO */
+.login-illustration-section {
+    position: relative;
+    background-color: transparent;
+    width: 55%;
+    max-width: 600px;
+    border-radius: 20px 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: flex-start;
     padding: 0;
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.dashboard-container {
-    max-width: 900px;
+.cancha-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; 
+    filter: brightness(0.6) saturate(1.2);
+    opacity: 0.9; 
+}
+
+.illustration-content {
+    position: relative;
+    z-index: 3;
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.login-academy-logo-glass {
+    position: absolute; 
+    top: -15px;
+    left: 20px;
+    height: 50px; 
+    z-index: 4; 
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); 
+}
+
+.welcome-title {
+    color: white; 
+    font-size: 3.5em; 
+    font-weight: 800;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.welcome-subtitle {
+    color: #e0e0e0; 
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+/* SECCIÓN DERECHA: FORMULARIO */
+
+.login-form-section {
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(15px); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    width: 45%;
+    max-width: 450px;
+    height: 600px;
+    border-radius: 0 20px 20px 0;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
+}
+
+.login-title {
+    color: white; 
+    font-size: 2.8em; 
+    font-weight: 700; 
+    text-align: center;
+    margin-bottom: 70px; 
+    letter-spacing: 0.5px; 
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+    margin-top: 20px; 
+}
+
+.input-label {
+    font-size: 1.1em;
+    color: white; 
+    display: block; 
+    margin-bottom: 8px;
+    font-weight: 600; 
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-input-glass {
+    padding: 14px 18px; 
+    border-radius: 15px;
+    font-size: 1.2em; 
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+    transition: background 0.3s;
+}
+.login-input-glass::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+.login-input-glass:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.login-button-glass {
+    background: linear-gradient(90deg, #6a5acd 0%, #8a2be2 100%); 
+    color: white;
+    padding: 18px 25px;
+    border: none;
+    border-radius: 15px; 
+    font-size: 1.3em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+}
+.login-button-glass:hover:not(:disabled) {
+    background: linear-gradient(90deg, #5c4ac4 0%, #7d1ee0 100%);
+    transform: translateY(-2px);
+}
+.login-button-glass:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.login-error-message {
+    color: #ffdd00; 
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: -10px;
+}
+
+/* --- Responsive Adjustments Login --- */
+@media (max-width: 992px) {
+    .login-page-container {
+        flex-direction: column;
+    }
+    .login-illustration-section,
+    .login-form-section {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+    .login-illustration-section {
+        order: 1;
+        height: 250px;
+        align-items: flex-start;
+        padding: 0;
+        border-radius: 20px 20px 20px 20px;
+    }
+    .login-form-section {
+        order: 2;
+        padding: 30px;
+        border-radius: 20px 20px 20px 20px;
+    }
+    .illustration-content {
+        padding: 30px;
+    }
+    .login-academy-logo-glass {
+        height: 40px; 
+        top: 10px; 
+        left: 10px;
+    }
+    .welcome-title {
+        font-size: 2.5em; 
+    }
+    .welcome-subtitle {
+        font-size: 1em;
+    }
+}
+
+
+/* ----------------------------------------------------
+   --- ESTILOS DE DASHBOARD: GLASSMORPHISM PÚRPURA ---
+   ---------------------------------------------------- */
+
+.dashboard-container-glass {
+    width: 100%;
+    max-width: 1200px;
     margin: 40px auto;
-    background-color: #ffffff;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    
+    /* Efecto Glassmorphism */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-/* --- ENCABEZADO Y BOTONES --- */
-.dashboard-header {
+/* Encabezado del Dashboard */
+.dashboard-header-glass {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 3px solid #007bff; /* Color principal azul */
-    padding-bottom: 15px;
-    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.header-branding {
+.header-branding-glass {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
-.academy-logo {
-    height: 50px; /* Ajusta este valor al tamaño deseado del logo */
-    width: auto;
-    margin-right: 15px;
+.academy-logo-glass {
+    height: 45px;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
 }
 
-.dashboard-header h1 {
-    color: #1a1a2e;
-    font-size: 1.6em; 
+.dashboard-header-glass h1 {
+    font-size: 2.2em;
     font-weight: 700;
+    color: white;
     margin: 0;
+    letter-spacing: 0.5px;
 }
 
-.logout-button {
-    background-color: #dc3545; /* Rojo de peligro */
+/* Botón de Cerrar Sesión (Reutiliza el estilo del login) */
+.logout-button-glass {
+    background: linear-gradient(90deg, #6a5acd 0%, #8a2be2 100%);
     color: white;
-    padding: 10px 18px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    border-radius: 12px;
+    font-size: 1em;
     font-weight: 600;
-    transition: background-color 0.2s;
-    display: flex; /* Para alinear el ícono */
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 2px 10px rgba(138, 43, 226, 0.4);
+    display: flex; 
     align-items: center;
 }
-.logout-button:hover {
-    background-color: #c82333;
+
+.logout-button-glass:hover {
+    background: linear-gradient(90deg, #5c4ac4 0%, #7d1ee0 100%);
+    transform: translateY(-2px);
 }
 
-/* --- TARJETA DE INFORMACIÓN DEL ESTUDIANTE (Corrección de tamaño y negrita) --- */
-.student-info-card {
-    background-color: #e9f0f8; /* Un azul muy suave */
-    padding: 15px 20px;
-    border-radius: 8px;
-    border-left: 5px solid #007bff;
-    margin-bottom: 30px;
+/* --- TARJETAS --- */
+
+/* Tarjeta de Información del Estudiante */
+.info-card-glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    gap: 10px; 
+    gap: 10px;
 }
-.student-info-card p {
+
+.info-card-glass p {
     margin: 0;
-    color: #333;
     font-size: 1.1em;
+    color: #e0e0e0;
     display: flex;
     align-items: center;
 }
 
-/* Etiqueta (Ej: Estudiante:, Código Único:) */
-.info-label {
-    color: #333;
+.info-label-glass {
+    color: #fff;
     font-weight: 500;
     margin-right: 5px;
 }
 
-/* Nombre del Estudiante y Código (detalles en negrita y más grande) */
-.student-detail {
-    font-size: 1.3em; 
+.student-detail-glass {
+    font-size: 1.2em; 
     font-weight: 700; 
-    color: #1a1a2e;
+    color: #fbe8ff; /* Amarillo para resaltar el nombre */
 }
 
-
-/* --- PANEL DE SALDO TOTAL --- */
-.total-saldo-card {
-    background-color: #ffffff;
+/* Tarjeta de Saldo Total */
+.balance-card-glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
     padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    margin-bottom: 30px;
-    border: 1px solid #e0e0e0;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.total-saldo-title {
-    color: #007bff;
-    font-size: 1.1em;
-    margin: 0 0 10px 0;
-    text-transform: uppercase;
-    font-weight: 600;
+.total-saldo-title-glass {
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    letter-spacing: 0.8px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.total-saldo-amount {
-    font-size: 3em;
+.saldo-amount-glass {
+    text-align: center;
+    font-size: 2.8em;
     font-weight: 800;
     margin: 0;
-    line-height: 1;
 }
 
-.pending-amount {
-    color: #dc3545; /* Rojo fuerte para deuda */
+.pending-amount-glass {
+    color: #ffffff; /* Rosa/Rojo para deuda */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.paid-amount {
-    color: #28a745; /* Verde fuerte para cero adeudo */
+.paid-amount-glass {
+    color: #00ffaa; /* Verde neón para cero adeudo */
+    text-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
 }
 
-/* --- TABLA DE PAGOS --- */
-.history-section h2 {
-    color: #007bff;
-    margin-bottom: 15px;
-    font-size: 1.5em;
-}
-
-.payments-table {
-    width: 100%;
-    border-collapse: separate; 
-    border-spacing: 0;
-    overflow: hidden; 
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.payments-table th, .payments-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
-    vertical-align: middle; /* Alineación vertical para iconos en la tabla */
-}
-
-.payments-table th {
-    background-color: #007bff;
+/* Historial de Pagos */
+.history-section-glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 25px;
     color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.history-title-glass {
+    color: white;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    letter-spacing: 0.8px;
+}
+
+/* Estilos de la tabla */
+.payments-table-glass {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.payments-table-glass th,
+.payments-table-glass td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    font-size: 1em;
+}
+
+.payments-table-glass th {
+    background-color: rgba(138, 43, 226, 0.4); /* Fondo púrpura para los encabezados */
     font-weight: 600;
+    color: white;
     text-transform: uppercase;
     font-size: 0.9em;
 }
-.payments-table tr:last-child td {
-    border-bottom: none; 
+
+.payments-table-glass tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Hover sutil */
 }
 
-.payments-table tbody tr:hover {
-    background-color: #f6faff; 
-}
-
-/* --- ESTADO DEL PAGO (Badges) --- */
+/* Colores de estado (Badges) */
 .status-paid {
-    background-color: #d4edda; 
-    color: #155724; 
+    background-color: #18cf49; 
+    color: #ffffff; 
     padding: 4px 8px;
     border-radius: 15px;
     font-weight: 700;
     font-size: 0.85em;
+    box-shadow: 0 0 5px #00ffaa;
 }
 
 .status-pending {
-    background-color: #f8d7da; 
-    color: #721c24; 
+    background-color: #c10909; 
+    color: #fdfdff; 
     padding: 4px 8px;
     border-radius: 15px;
     font-weight: 700;
     font-size: 0.85em;
-    animation: pulse-pending 1.5s infinite; 
+    animation: pulse-pending-glass 1.5s infinite;
+    box-shadow: 0 0 5px #fffefe;
 }
 
-@keyframes pulse-pending {
-  0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4); }
-  70% { box-shadow: 0 0 0 5px rgba(220, 53, 69, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+@keyframes pulse-pending-glass {
+    0% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(255, 221, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0); }
 }
 
-.no-records {
+.no-records-glass {
     text-align: center !important;
     font-style: italic;
-    color: #888;
+    color: #b0b0b0;
+    padding: 20px;
+}
+
+/* Responsive para Dashboard */
+@media (max-width: 768px) {
+    .dashboard-container-glass {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .dashboard-header-glass {
+        flex-direction: column;
+        gap: 15px;
+        padding-bottom: 15px;
+    }
+
+    .header-branding-glass {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .dashboard-header-glass h1 {
+        font-size: 1.8em;
+    }
+
+    .logout-button-glass {
+        width: 100%;
+        max-width: 200px;
+        font-size: 0.9em;
+    }
+
+    .info-card-glass,
+    .balance-card-glass,
+    .history-section-glass {
+        padding: 20px;
+    }
+
+    .saldo-amount-glass {
+        font-size: 2.2em;
+    }
+
+    .payments-table-glass th,
+    .payments-table-glass td {
+        font-size: 0.9em;
+        padding: 10px;
+    }
 }
