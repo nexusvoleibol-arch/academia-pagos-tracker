@@ -6,10 +6,9 @@ body {
     -moz-osx-font-smoothing: grayscale;
     /* Fondo Degradado Púrpura para todo (Login y Dashboard) */
     background: linear-gradient(135deg, #4b0082 0%, #8a2be2 100%);
-    color: white; /* Color de texto por defecto blanco */
+    color: white; 
     min-height: 100vh;
     display: flex;
-    /* CAMBIO CLAVE: Cambiamos a 'flex-start' para permitir el scroll en el dashboard móvil */
     justify-content: center;
     align-items: flex-start; 
 }
@@ -187,7 +186,7 @@ body {
     margin-top: -10px;
 }
 
-/* --- Responsive Adjustments Login (Mantengo esta sección como estaba) --- */
+/* --- Responsive Adjustments Login --- */
 @media (max-width: 992px) {
     .login-page-container {
         flex-direction: column;
@@ -464,10 +463,10 @@ body {
    ---------------------------------------------------- */
 @media (max-width: 768px) {
     .dashboard-container-glass {
-        padding: 15px; /* Menos padding en celular */
-        margin: 0; /* Ocupa todo el ancho */
+        padding: 15px; 
+        margin: 0; 
         min-height: 100vh;
-        border-radius: 0; /* Sin bordes redondeados para aprovechar toda la pantalla */
+        border-radius: 0; 
     }
 
     .dashboard-header-glass {
@@ -482,7 +481,7 @@ body {
     }
 
     .dashboard-header-glass h1 {
-        font-size: 1.6em; /* Título más pequeño */
+        font-size: 1.6em; 
     }
 
     .academy-logo-glass {
@@ -491,7 +490,7 @@ body {
 
     .logout-button-glass {
         width: 100%;
-        max-width: 250px; /* Ancho máximo para el botón */
+        max-width: 250px; 
         font-size: 0.9em;
     }
 
@@ -516,7 +515,7 @@ body {
     }
 
     .saldo-amount-glass {
-        font-size: 2.5em; /* Cantidad de saldo más pequeña */
+        font-size: 2.5em; 
     }
     
     .history-title-glass {
@@ -526,12 +525,17 @@ body {
     /* Gestión de la tabla en móviles (permite scroll horizontal) */
     .payments-table-glass th,
     .payments-table-glass td {
-        font-size: 0.85em;
-        padding: 10px 8px;
+        font-size: 0.8em; /* Reducción de fuente para las celdas */
+        padding: 8px 5px; /* Menos padding */
+    }
+
+    .payments-table-glass th {
+        /* CRUCIAL: Evita que las cabeceras se envuelvan, obligando el scroll */
+        white-space: nowrap; 
+        font-size: 0.75em; /* Aún más pequeño para la cabecera */
     }
     
     .history-section-glass {
-        /* Se mantiene overflow-x: auto; para permitir scroll horizontal */
         overflow-x: auto; 
     }
 }
