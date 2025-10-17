@@ -14,7 +14,7 @@ body {
 }
 
 /* ----------------------------------------------------
-   --- ESTILOS DE LOGIN: GLASSMORPHISM MINIMALISTA ---
+--- ESTILOS DE LOGIN: GLASSMORPHISM MINIMALISTA ---
    ---------------------------------------------------- */
 
 .login-page-container {
@@ -232,7 +232,7 @@ body {
 
 
 /* ----------------------------------------------------
-   --- ESTILOS DE DASHBOARD: GLASSMORPHISM MINIMALISTA ---
+--- ESTILOS DE DASHBOARD: GLASSMORPHISM MINIMALISTA ---
    ---------------------------------------------------- */
 
 .dashboard-container-glass {
@@ -468,7 +468,7 @@ body {
 }
 
 /* ----------------------------------------------------
-   --- Responsive para Dashboard (max-width: 768px) ---
+--- Responsive para Dashboard (max-width: 768px) ---
    ---------------------------------------------------- */
 @media (max-width: 768px) {
     body {
@@ -554,18 +554,76 @@ body {
         font-size: 1.4em;
     }
     
+    /* GESTIÓN DE LA TABLA: CONVERSIÓN A TARJETAS */
+
     .history-section-glass {
-        overflow-x: auto; 
+        overflow-x: hidden; /* IMPORTANTE: Quitamos el scroll horizontal */
+        padding: 15px; 
     }
     
-    .payments-table-glass th,
-    .payments-table-glass td {
-        font-size: 0.75em; 
-        padding: 8px 5px; 
+    .payments-table-glass {
+        min-width: unset; /* Ignoramos el min-width forzado para la tabla */
     }
 
-    .payments-table-glass th {
-        white-space: nowrap; 
-        font-size: 0.75em;
+    .payments-table-glass,
+    .payments-table-glass thead,
+    .payments-table-glass tbody,
+    .payments-table-glass th,
+    .payments-table-glass td,
+    .payments-table-glass tr {
+        display: block; /* Convertimos todos los elementos de la tabla a bloques */
+        width: 100%;
+        box-sizing: border-box; 
+    }
+
+    /* Ocultar el encabezado de la tabla (solo en móvil) */
+    .payments-table-glass thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    /* Estilo de cada fila como una tarjeta */
+    .payments-table-glass tr {
+        /* Borde inferior para separar cada "tarjeta" de pago */
+        border: 1px solid rgba(255, 255, 255, 0.1); 
+        margin-bottom: 15px;
+        padding: 15px; 
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05); /* Ligeramente diferente para resaltar la tarjeta */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilo de las celdas (los detalles de la tarjeta) */
+    .payments-table-glass td {
+        border: none; /* Quitamos las líneas internas de la tabla */
+        padding: 8px 0;
+        text-align: right !important; /* Alineamos el valor a la derecha */
+        position: relative;
+        padding-left: 50%; /* Damos espacio para la etiqueta */
+        font-size: 1em; /* Subimos el tamaño de fuente para mejor lectura */
+    }
+
+    /* Mostrar la etiqueta de cada celda usando el pseudo-elemento ::before */
+    .payments-table-glass td::before {
+        content: attr(data-label); /* Usa el contenido del data-label (ej: "Mes") */
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 700; /* La etiqueta es fuerte */
+        color: #b0b0b0; /* Un color de texto más suave para la etiqueta */
+    }
+
+    /* Ajuste para el estado (que es un badge) */
+    .payments-table-glass td:last-child {
+        text-align: right !important; 
+    }
+    .payments-table-glass td:last-child .status-paid,
+    .payments-table-glass td:last-child .status-pending {
+        display: inline-block; /* Asegura que el badge se vea bien a la derecha */
+        float: right;
     }
 }
