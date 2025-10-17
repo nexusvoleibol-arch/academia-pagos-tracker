@@ -124,12 +124,12 @@ export default function DashboardPage() {
           {/* INFORMACIÓN DEL ESTUDIANTE */}
           <div className="student-details-grid">
             <p>
-              <FaUserCircle style={{ marginRight: '10px' }} /> 
+              <FaUserCircle style={{ marginRight: '10px', color: '#F45D4C' }} /> {/* Ícono Coral */}
               <span className="info-label-glass">Estudiante:</span>
               <span className="student-detail-glass">{student.nombre} {student.apellido}</span>
             </p>
             <p>
-              <FaDollarSign style={{ marginRight: '10px' }} /> 
+              <FaDollarSign style={{ marginRight: '10px', color: '#F45D4C' }} /> {/* Ícono Coral */}
               <span className="info-label-glass">Código Único:</span>
               <span className="student-detail-glass">{student.id}</span>
             </p>
@@ -138,7 +138,7 @@ export default function DashboardPage() {
 
       {/* PANEL DE SALDO TOTAL */}
       <div className="balance-card-glass">
-          <h2 className="total-saldo-title-glass"><FaMoneyBillWave style={{ marginRight: '10px' }} /> Saldo Total Pendiente</h2>
+          <h2 className="total-saldo-title-glass"><FaMoneyBillWave style={{ marginRight: '10px', color: '#F45D4C' }} /> Saldo Total Pendiente</h2>
           {hasPending ? (
               <p className="saldo-amount-glass pending-amount-glass">
                   {formattedTotalPending}
@@ -165,7 +165,7 @@ export default function DashboardPage() {
             {payments.length > 0 ? (
               payments.map((p, index) => ( 
                 <tr key={index} className={p.estado.toUpperCase() === 'PENDIENTE' ? 'row-pending' : ''}>
-                    <td><FaCalendarAlt style={{ marginRight: '8px', color: '#469cd2' }} /> {p.mes}</td> {/* Azul claro para íconos */}
+                    <td><FaCalendarAlt style={{ marginRight: '8px', color: '#F45D4C' }} /> {p.mes}</td> {/* Ícono Coral */}
                     <td>{formatDate(p.fecha_pago)}</td> 
                     <td>{formatCurrency(p.monto_debido)}</td>
                     <td>

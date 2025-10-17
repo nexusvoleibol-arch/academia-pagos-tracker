@@ -4,9 +4,9 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Fondo Degradado COMBINADO: Morado oscuro a Azul oscuro */
-    background: linear-gradient(135deg, #3a1c6e 0%, #1c3d64 100%); 
-    color: white; 
+    /* Fondo Degradado MINIMALISTA: Gris Oscuro a Negro */
+    background: linear-gradient(135deg, #1A1A1D 0%, #0D0D0F 100%); 
+    color: white; /* Color de texto por defecto blanco */
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -14,7 +14,7 @@ body {
 }
 
 /* ----------------------------------------------------
-   --- ESTILOS DE LOGIN: GLASSMORPHISM COMBINADO ---
+   --- ESTILOS DE LOGIN: GLASSMORPHISM MINIMALISTA ---
    ---------------------------------------------------- */
 
 .login-page-container {
@@ -33,7 +33,7 @@ body {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); 
 }
 
-/* SECCIÓN IZQUIERDA: BIENVENIDOS Y FONDO (Mantener tonos neutros/oscuros) */
+/* SECCIÓN IZQUIERDA: BIENVENIDOS Y FONDO (Gris Neutro Oscuro) */
 .login-illustration-section {
     position: relative;
     background-color: transparent;
@@ -47,7 +47,7 @@ body {
     padding: 0;
     overflow: hidden;
     backdrop-filter: blur(4px);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.05); /* Muy poca transparencia */
 }
 
 .cancha-background-image {
@@ -58,7 +58,7 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: 1; 
-    filter: brightness(0.6) saturate(1.2);
+    filter: brightness(0.4) grayscale(0.5); /* Más oscuro y menos saturado */
     opacity: 0.9; 
 }
 
@@ -88,7 +88,7 @@ body {
 }
 
 .welcome-subtitle {
-    color: #e0e0e0; 
+    color: #b0b0b0; /* Gris claro */
     font-size: 1.2em;
     font-weight: 400;
     margin-bottom: 0;
@@ -97,7 +97,8 @@ body {
 /* SECCIÓN DERECHA: FORMULARIO */
 
 .login-form-section {
-    background: rgba(255, 255, 255, 0.15); 
+    /* Glassmorphism en tono oscuro, casi negro */
+    background: rgba(26, 26, 29, 0.85); 
     backdrop-filter: blur(15px); 
     border: 1px solid rgba(255, 255, 255, 0.1); 
     width: 45%;
@@ -109,7 +110,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6); 
 }
 
 .login-title {
@@ -146,21 +147,22 @@ body {
     border-radius: 15px;
     font-size: 1.2em; 
     border: none;
-    background: rgba(255, 255, 255, 0.2);
+    /* Fondo de input más oscuro */
+    background: rgba(255, 255, 255, 0.1); 
     color: white;
     outline: none;
     transition: background 0.3s;
 }
 .login-input-glass::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.5);
 }
 .login-input-glass:focus {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .login-button-glass {
-    /* Gradiente Morado (Activo) */
-    background: linear-gradient(90deg, #6a5acd 0%, #8a2be2 100%); 
+    /* Gradiente de Acento Minimalista (Coral/Salmón) */
+    background: linear-gradient(90deg, #F45D4C 0%, #D44E40 100%); 
     color: white;
     padding: 18px 25px;
     border: none;
@@ -169,10 +171,10 @@ body {
     font-weight: 700;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
-    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+    box-shadow: 0 4px 15px rgba(244, 93, 76, 0.4);
 }
 .login-button-glass:hover:not(:disabled) {
-    background: linear-gradient(90deg, #5c4ac4 0%, #7d1ee0 100%);
+    background: linear-gradient(90deg, #D44E40 0%, #B43C30 100%);
     transform: translateY(-2px);
 }
 .login-button-glass:disabled {
@@ -181,7 +183,7 @@ body {
 }
 
 .login-error-message {
-    color: #ffdd00; 
+    color: #F45D4C; /* El error usa el color de acento */
     font-size: 0.9em;
     text-align: center;
     margin-top: -10px;
@@ -230,7 +232,7 @@ body {
 
 
 /* ----------------------------------------------------
-   --- ESTILOS DE DASHBOARD: GLASSMORPHISM COMBINADO ---
+   --- ESTILOS DE DASHBOARD: GLASSMORPHISM MINIMALISTA ---
    ---------------------------------------------------- */
 
 .dashboard-container-glass {
@@ -243,12 +245,12 @@ body {
     flex-direction: column;
     gap: 30px;
     
-    /* Efecto Glassmorphism */
-    background: rgba(255, 255, 255, 0.08);
+    /* Efecto Glassmorphism más discreto y oscuro */
+    background: rgba(26, 26, 29, 0.7);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
 }
 
 /* Encabezado del Dashboard */
@@ -279,9 +281,9 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Botón de Cerrar Sesión (MORADO ACTIVO) */
+/* Botón de Cerrar Sesión (Coral/Salmón Acuático) */
 .logout-button-glass {
-    background: linear-gradient(90deg, #6a5acd 0%, #8a2be2 100%);
+    background: linear-gradient(90deg, #F45D4C 0%, #D44E40 100%);
     color: white;
     padding: 10px 20px;
     border: none;
@@ -290,21 +292,21 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
-    box-shadow: 0 2px 10px rgba(138, 43, 226, 0.4);
+    box-shadow: 0 2px 10px rgba(244, 93, 76, 0.4);
     display: flex; 
     align-items: center;
 }
 
 .logout-button-glass:hover {
-    background: linear-gradient(90deg, #5c4ac4 0%, #7d1ee0 100%);
+    background: linear-gradient(90deg, #D44E40 0%, #B43C30 100%);
     transform: translateY(-2px);
 }
 
 /* --- TARJETAS --- */
 
-/* Tarjeta de Información del Estudiante (GRIS/NEUTRO) */
+/* Tarjeta de Información del Estudiante (Gris Neutro Oscuro) */
 .info-card-glass {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.08); /* Fondo más sutil */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 15px;
@@ -342,9 +344,9 @@ body {
     color: #fffbfb; 
 }
 
-/* Tarjeta de Saldo Total (AZUL VIBRANTE) */
+/* Tarjeta de Saldo Total (Acento Salmón/Coral) */
 .balance-card-glass {
-    background: rgba(30, 144, 255, 0.15); /* Azul más notorio */
+    background: rgba(244, 93, 76, 0.15); /* Fondo de acento */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 15px;
@@ -355,8 +357,7 @@ body {
 
 .total-saldo-title-glass {
     text-align: center;
-    /* Azul claro */
-    color: #b3e5fc;
+    color: #fce4e1; /* Gris claro que contrasta con el acento */
     font-size: 1.4em;
     margin-bottom: 15px;
     letter-spacing: 0.8px;
@@ -373,25 +374,24 @@ body {
 }
 
 .pending-amount-glass {
-    color: #f9f9f9; 
-    text-shadow: 0 0 10px rgba(16, 16, 16, 0.5);
+    color: #F45D4C; /* Saldo pendiente en color de acento */
+    text-shadow: 0 0 10px rgba(244, 93, 76, 0.5);
 }
 
 .paid-amount-glass {
-    color: #00ffaa; 
-    text-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
+    color: #00BF63; /* Verde Menta (Acento de éxito) */
+    text-shadow: 0 0 10px rgba(0, 191, 99, 0.5);
 }
 
-/* Historial de Pagos (MORADO ACTIVO) */
+/* Historial de Pagos (Gris Oscuro Neutro) */
 .history-section-glass {
-    background: rgba(138, 43, 226, 0.12); /* Morado transparente */
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 15px;
     padding: 25px;
     color: white;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    /* Desbordamiento horizontal para la tabla en móviles */
     overflow-x: auto; 
 }
 
@@ -420,8 +420,8 @@ body {
 }
 
 .payments-table-glass th {
-    /* Fondo de encabezado Morado más oscuro */
-    background-color: rgba(138, 43, 226, 0.4); 
+    /* Fondo de encabezado Gris más oscuro */
+    background-color: rgba(26, 26, 29, 0.4); 
     font-weight: 600;
     color: white;
     text-transform: uppercase;
@@ -434,30 +434,30 @@ body {
 
 /* Colores de estado (Badges) */
 .status-paid {
-    background-color: #046d4a; 
+    background-color: #00BF63; /* Verde Menta */
     color: #fdfdfd; 
     padding: 4px 8px;
     border-radius: 15px;
     font-weight: 700;
     font-size: 0.85em;
-    box-shadow: 0 0 5px #00ffaa;
+    box-shadow: 0 0 5px rgba(0, 191, 99, 0.5);
 }
 
 .status-pending {
-    background-color: #eb3030; 
+    background-color: #F45D4C; /* Coral/Salmón */
     color: #ffffff; 
     padding: 4px 8px;
     border-radius: 15px;
     font-weight: 700;
     font-size: 0.85em;
     animation: pulse-pending-glass 1.5s infinite;
-    box-shadow: 0 0 5px #6b1408;
+    box-shadow: 0 0 5px rgba(244, 93, 76, 0.5);
 }
 
 @keyframes pulse-pending-glass {
-    0% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0.7); }
-    70% { box-shadow: 0 0 0 8px rgba(255, 221, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(244, 93, 76, 0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(244, 93, 76, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(244, 93, 76, 0); }
 }
 
 .no-records-glass {
@@ -471,7 +471,6 @@ body {
    --- Responsive para Dashboard (max-width: 768px) ---
    ---------------------------------------------------- */
 @media (max-width: 768px) {
-    /* CORRECCIÓN GLOBAL: Ocultar desbordamiento horizontal en el cuerpo */
     body {
         overflow-x: hidden;
     }
@@ -533,6 +532,7 @@ body {
     .info-card-glass p svg {
         margin-right: 5px; 
         margin-bottom: 0;
+        color: #F45D4C; /* Usa el color de acento para los íconos de info */
     }
     .info-label-glass {
         font-weight: 600;
@@ -554,7 +554,6 @@ body {
         font-size: 1.4em;
     }
     
-    /* Gestión de la tabla en móviles (permite scroll horizontal) */
     .history-section-glass {
         overflow-x: auto; 
     }
