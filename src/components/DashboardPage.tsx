@@ -105,54 +105,54 @@ export default function DashboardPage() {
 
 
   return (
-    <div className="dashboard-container-glass"> {/* CLASE CORREGIDA */}
-      <header className="dashboard-header-glass"> {/* CLASE CORREGIDA */}
+    <div className="dashboard-container-glass">
+      <header className="dashboard-header-glass">
           {/* LOGO Y TÍTULO */}
-          <div className="header-branding-glass"> {/* CLASE CORREGIDA */}
-              <img src={Logo} alt="Logo Academia" className="academy-logo-glass" /> {/* CLASE CORREGIDA */}
+          <div className="header-branding-glass">
+              <img src={Logo} alt="Logo Academia" className="academy-logo-glass" />
               <h1>Panel de Pagos</h1>
           </div>
         <button 
           onClick={() => navigate('/login')} 
-          className="logout-button-glass" /* CLASE CORREGIDA (Error de sintaxis corregido en línea 117) */
+          className="logout-button-glass"
         >
           <FaLock style={{ marginRight: '8px' }}/> Cerrar Sesión
         </button>
       </header>
       
-      <div className="info-card-glass"> {/* CLASE CORREGIDA */}
+      <div className="info-card-glass">
           {/* INFORMACIÓN DEL ESTUDIANTE */}
-          <div className="student-details-grid"> {/* NUEVO CONTENEDOR PARA MOBILE */}
+          <div className="student-details-grid">
             <p>
               <FaUserCircle style={{ marginRight: '10px' }} /> 
-              <span className="info-label-glass">Estudiante:</span> {/* CLASE CORREGIDA */}
-              <span className="student-detail-glass">{student.nombre} {student.apellido}</span> {/* CLASE CORREGIDA */}
+              <span className="info-label-glass">Estudiante:</span>
+              <span className="student-detail-glass">{student.nombre} {student.apellido}</span>
             </p>
             <p>
               <FaDollarSign style={{ marginRight: '10px' }} /> 
-              <span className="info-label-glass">Código Único:</span> {/* CLASE CORREGIDA */}
-              <span className="student-detail-glass">{student.id}</span> {/* CLASE CORREGIDA */}
+              <span className="info-label-glass">Código Único:</span>
+              <span className="student-detail-glass">{student.id}</span>
             </p>
           </div>
       </div>
 
       {/* PANEL DE SALDO TOTAL */}
-      <div className="balance-card-glass"> {/* CLASE CORREGIDA */}
-          <h2 className="total-saldo-title-glass"><FaMoneyBillWave style={{ marginRight: '10px' }} /> Saldo Total Pendiente</h2> {/* CLASE CORREGIDA */}
+      <div className="balance-card-glass">
+          <h2 className="total-saldo-title-glass"><FaMoneyBillWave style={{ marginRight: '10px' }} /> Saldo Total Pendiente</h2>
           {hasPending ? (
-              <p className="saldo-amount-glass pending-amount-glass"> {/* CLASE CORREGIDA */}
+              <p className="saldo-amount-glass pending-amount-glass">
                   {formattedTotalPending}
               </p>
           ) : (
-              <p className="saldo-amount-glass paid-amount-glass"> {/* CLASE CORREGIDA */}
+              <p className="saldo-amount-glass paid-amount-glass">
                   ¡CERO ADEUDO!
               </p>
           )}
       </div>
 
-      <div className="history-section-glass"> {/* CLASE CORREGIDA */}
-        <h2 className="history-title-glass">Historial de Pagos</h2> {/* CLASE CORREGIDA */}
-        <table className="payments-table-glass"> {/* CLASE CORREGIDA */}
+      <div className="history-section-glass">
+        <h2 className="history-title-glass">Historial de Pagos</h2>
+        <table className="payments-table-glass">
           <thead>
             <tr>
               <th>Mes</th>
@@ -165,7 +165,7 @@ export default function DashboardPage() {
             {payments.length > 0 ? (
               payments.map((p, index) => ( 
                 <tr key={index} className={p.estado.toUpperCase() === 'PENDIENTE' ? 'row-pending' : ''}>
-                    <td><FaCalendarAlt style={{ marginRight: '8px', color: '#007bff' }} /> {p.mes}</td>
+                    <td><FaCalendarAlt style={{ marginRight: '8px', color: '#469cd2' }} /> {p.mes}</td> {/* Azul claro para íconos */}
                     <td>{formatDate(p.fecha_pago)}</td> 
                     <td>{formatCurrency(p.monto_debido)}</td>
                     <td>
@@ -177,7 +177,7 @@ export default function DashboardPage() {
               ))
             ) : (
               <tr>
-                <td colSpan={4} className="no-records-glass">No hay registros de pagos.</td> {/* CLASE CORREGIDA */}
+                <td colSpan={4} className="no-records-glass">No hay registros de pagos.</td>
               </tr>
             )}
           </tbody>
