@@ -114,7 +114,7 @@ export default function DashboardPage() {
           </div>
         <button 
           onClick={() => navigate('/login')} 
-          className="logout-button-glass" /* CLASE CORREGIDA (Error de sintaxis corregido) */
+          className="logout-button-glass" /* CLASE CORREGIDA (Error de sintaxis corregido en línea 117) */
         >
           <FaLock style={{ marginRight: '8px' }}/> Cerrar Sesión
         </button>

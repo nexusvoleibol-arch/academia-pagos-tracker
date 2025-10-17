@@ -518,25 +518,31 @@ body {
         gap: 8px;
     }
     
-    /* 🔑 FIX CLAVE: FUERZA LA INFORMACIÓN DEL ESTUDIANTE A APILARSE */
+    /* 🔑 FIX CLAVE: FUERZA LA INFORMACIÓN DEL ESTUDIANTE A MANTENERSE EN LÍNEA */
     .student-details-grid p { /* Selecciona los <p> dentro del nuevo grid */
-        flex-direction: column; /* Apila el label y el detalle */
-        align-items: flex-start;
-        font-size: 0.9em; /* Texto un poco más pequeño */
+        /* Eliminamos flex-direction: column para que se mantenga en línea horizontal */
+        flex-direction: row; 
+        align-items: center; /* Centra verticalmente los elementos */
+        font-size: 0.9em; /* Texto un poco más pequeño para que quepa */
         margin-bottom: 5px;
+        /* Permitir que el texto se envuelva si es muy largo, pero manteniendo la estructura en línea */
+        flex-wrap: wrap; 
     }
+    
     .info-card-glass p svg {
-        margin-bottom: 5px;
+        /* Asegura que el ícono esté alineado y con el margen correcto */
+        margin-right: 5px; 
+        margin-bottom: 0;
     }
     .info-label-glass {
         font-weight: 600;
-        margin-bottom: 2px;
+        margin-right: 5px; /* Pequeño margen después del label */
+        margin-bottom: 0;
     }
     
     .student-detail-glass {
-        font-size: 1.1em; 
+        font-size: 1em; /* El valor del detalle se reduce un poco */
         font-weight: 700;
-        /* Asegura que no se desborde */
         word-break: break-word; 
     }
 
