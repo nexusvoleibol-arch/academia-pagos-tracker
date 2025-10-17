@@ -9,8 +9,9 @@ body {
     color: white; /* Color de texto por defecto blanco */
     min-height: 100vh;
     display: flex;
+    /* CAMBIO CLAVE: Cambiamos a 'flex-start' para permitir el scroll en el dashboard móvil */
     justify-content: center;
-    align-items: flex-start; /* Alinea el contenido arriba, permitiendo scroll si es necesario */
+    align-items: flex-start; 
 }
 
 /* ----------------------------------------------------
@@ -20,7 +21,6 @@ body {
 .login-page-container {
     display: flex;
     min-height: 100vh;
-    /* Usamos el fondo del body */
     align-items: center;
     justify-content: center;
     padding: 20px;
@@ -187,7 +187,7 @@ body {
     margin-top: -10px;
 }
 
-/* --- Responsive Adjustments Login --- */
+/* --- Responsive Adjustments Login (Mantengo esta sección como estaba) --- */
 @media (max-width: 992px) {
     .login-page-container {
         flex-direction: column;
@@ -319,7 +319,7 @@ body {
 .info-card-glass p {
     margin: 0;
     font-size: 1.1em;
-    color: #e0e0e0;
+    color: #ffffff;
     display: flex;
     align-items: center;
 }
@@ -333,7 +333,7 @@ body {
 .student-detail-glass {
     font-size: 1.2em; 
     font-weight: 700; 
-    color: #fbe8ff; /* Amarillo para resaltar el nombre */
+    color: #fffbfb; 
 }
 
 /* Tarjeta de Saldo Total */
@@ -343,13 +343,13 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 15px;
     padding: 25px;
-    color: rgb(255, 255, 255);
+    color: white;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .total-saldo-title-glass {
     text-align: center;
-    color: #ffffff;
+    color: #ffddff;
     font-size: 1.4em;
     margin-bottom: 15px;
     letter-spacing: 0.8px;
@@ -366,24 +366,26 @@ body {
 }
 
 .pending-amount-glass {
-    color: #ffffff; /* Rosa/Rojo para deuda */
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #f9f9f9; 
+    text-shadow: 0 0 10px rgba(16, 16, 16, 0.5);
 }
 
 .paid-amount-glass {
-    color: #00ffaa; /* Verde neón para cero adeudo */
+    color: #00ffaa; 
     text-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
 }
 
 /* Historial de Pagos */
 .history-section-glass {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(3, 0, 0, 0.12);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 15px;
     padding: 25px;
     color: white;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Desbordamiento horizontal para la tabla en móviles */
+    overflow-x: auto; 
 }
 
 .history-title-glass {
@@ -396,6 +398,7 @@ body {
 /* Estilos de la tabla */
 .payments-table-glass {
     width: 100%;
+    min-width: 600px; /* Asegura que la tabla no se colapse demasiado */
     border-collapse: collapse;
     margin-top: 15px;
 }
@@ -410,7 +413,7 @@ body {
 }
 
 .payments-table-glass th {
-    background-color: rgba(138, 43, 226, 0.4); /* Fondo púrpura para los encabezados */
+    background-color: rgba(138, 43, 226, 0.4); 
     font-weight: 600;
     color: white;
     text-transform: uppercase;
@@ -418,13 +421,13 @@ body {
 }
 
 .payments-table-glass tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.05); /* Hover sutil */
+    background-color: rgba(255, 255, 255, 0.05); 
 }
 
 /* Colores de estado (Badges) */
 .status-paid {
-    background-color: #18cf49; 
-    color: #ffffff; 
+    background-color: #046d4a; 
+    color: #fdfdfd; 
     padding: 4px 8px;
     border-radius: 15px;
     font-weight: 700;
@@ -433,14 +436,14 @@ body {
 }
 
 .status-pending {
-    background-color: #c10909; 
-    color: #fdfdff; 
+    background-color: #eb3030; 
+    color: #ffffff; 
     padding: 4px 8px;
     border-radius: 15px;
     font-weight: 700;
     font-size: 0.85em;
     animation: pulse-pending-glass 1.5s infinite;
-    box-shadow: 0 0 5px #fffefe;
+    box-shadow: 0 0 5px #6b1408;
 }
 
 @keyframes pulse-pending-glass {
@@ -456,11 +459,15 @@ body {
     padding: 20px;
 }
 
-/* Responsive para Dashboard */
+/* ----------------------------------------------------
+   --- Responsive para Dashboard (max-width: 768px) ---
+   ---------------------------------------------------- */
 @media (max-width: 768px) {
     .dashboard-container-glass {
-        padding: 20px;
-        margin: 20px auto;
+        padding: 15px; /* Menos padding en celular */
+        margin: 0; /* Ocupa todo el ancho */
+        min-height: 100vh;
+        border-radius: 0; /* Sin bordes redondeados para aprovechar toda la pantalla */
     }
 
     .dashboard-header-glass {
@@ -475,28 +482,56 @@ body {
     }
 
     .dashboard-header-glass h1 {
-        font-size: 1.8em;
+        font-size: 1.6em; /* Título más pequeño */
+    }
+
+    .academy-logo-glass {
+        height: 35px;
     }
 
     .logout-button-glass {
         width: 100%;
-        max-width: 200px;
+        max-width: 250px; /* Ancho máximo para el botón */
         font-size: 0.9em;
     }
 
+    /* Ajustes generales de las tarjetas */
     .info-card-glass,
     .balance-card-glass,
     .history-section-glass {
         padding: 20px;
+        gap: 8px;
+    }
+    
+    .info-card-glass p {
+        font-size: 1em;
+    }
+    
+    .student-detail-glass {
+        font-size: 1.1em; 
+    }
+
+    .total-saldo-title-glass {
+        font-size: 1.2em;
     }
 
     .saldo-amount-glass {
-        font-size: 2.2em;
+        font-size: 2.5em; /* Cantidad de saldo más pequeña */
+    }
+    
+    .history-title-glass {
+        font-size: 1.5em;
     }
 
+    /* Gestión de la tabla en móviles (permite scroll horizontal) */
     .payments-table-glass th,
     .payments-table-glass td {
-        font-size: 0.9em;
-        padding: 10px;
+        font-size: 0.85em;
+        padding: 10px 8px;
+    }
+    
+    .history-section-glass {
+        /* Se mantiene overflow-x: auto; para permitir scroll horizontal */
+        overflow-x: auto; 
     }
 }
