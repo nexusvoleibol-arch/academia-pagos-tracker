@@ -14,7 +14,7 @@ body {
 }
 
 /* ----------------------------------------------------
---- ESTILOS DE LOGIN: GLASSMORPHISM MINIMALISTA ---
+   --- ESTILOS DE LOGIN: GLASSMORPHISM MINIMALISTA ---
    ---------------------------------------------------- */
 
 .login-page-container {
@@ -232,7 +232,7 @@ body {
 
 
 /* ----------------------------------------------------
---- ESTILOS DE DASHBOARD: GLASSMORPHISM MINIMALISTA ---
+   --- ESTILOS DE DASHBOARD: GLASSMORPHISM MINIMALISTA ---
    ---------------------------------------------------- */
 
 .dashboard-container-glass {
@@ -468,7 +468,7 @@ body {
 }
 
 /* ----------------------------------------------------
---- Responsive para Dashboard (max-width: 768px) ---
+   --- Responsive para Dashboard (max-width: 768px) ---
    ---------------------------------------------------- */
 @media (max-width: 768px) {
     body {
@@ -617,13 +617,17 @@ body {
         color: #b0b0b0; /* Un color de texto más suave para la etiqueta */
     }
 
-    /* Ajuste para el estado (que es un badge) */
+    /* --------------------------------------------------------------------
+       AJUSTE PARA EL ESTADO (CORRECCIÓN DE DESBORDE EN MÓVIL)
+       -------------------------------------------------------------------- */
     .payments-table-glass td:last-child {
+        /* Esto asegura que la última columna (el badge) esté alineada a la derecha */
         text-align: right !important; 
     }
     .payments-table-glass td:last-child .status-paid,
     .payments-table-glass td:last-child .status-pending {
-        display: inline-block; /* Asegura que el badge se vea bien a la derecha */
-        float: right;
+        /* Al eliminar el float: right, se centra correctamente dentro del espacio
+           alineado a la derecha, evitando el desborde. */
+        display: inline-block; 
     }
 }

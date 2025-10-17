@@ -165,7 +165,7 @@ export default function DashboardPage() {
             {payments.length > 0 ? (
               payments.map((p, index) => ( 
                 <tr key={index} className={p.estado.toUpperCase() === 'PENDIENTE' ? 'row-pending' : ''}>
-                    <td data-label="Mes"><FaCalendarAlt style={{ marginRight: '8px', color: '#F45D4C' }} /> {p.mes}</td> {/* Ícono Coral */}
+                    <td data-label="Mes"><FaCalendarAlt style={{ marginRight: '8px', color: '#F45D4C' }} /> {p.mes}</td>
                     <td data-label="Fecha de Pago">{formatDate(p.fecha_pago)}</td> 
                     <td data-label="Monto">{formatCurrency(p.monto_debido)}</td>
                     <td data-label="Estado">
