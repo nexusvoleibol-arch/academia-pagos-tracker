@@ -315,6 +315,12 @@ body {
     gap: 10px;
 }
 
+.student-details-grid {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+}
+
 .info-card-glass p {
     margin: 0;
     font-size: 1.1em;
@@ -462,80 +468,99 @@ body {
    --- Responsive para Dashboard (max-width: 768px) ---
    ---------------------------------------------------- */
 @media (max-width: 768px) {
+    /* CORRECCIÓN GLOBAL: Ocultar desbordamiento horizontal en el cuerpo */
+    body {
+        overflow-x: hidden;
+    }
+    
     .dashboard-container-glass {
         padding: 15px; 
         margin: 0; 
+        width: 100vw; /* Asegura el ancho exacto del viewport */
         min-height: 100vh;
-        border-radius: 0; 
+        border-radius: 0;
+        box-shadow: none;
+        gap: 20px; /* Reduce el espacio entre secciones */
     }
 
     .dashboard-header-glass {
         flex-direction: column;
-        gap: 15px;
+        align-items: flex-start; /* Alinea el logo a la izquierda en lugar de centrarlo */
+        gap: 10px;
         padding-bottom: 15px;
     }
 
     .header-branding-glass {
-        flex-direction: column;
-        gap: 5px;
+        flex-direction: row; /* Mantiene logo y título en fila si es posible */
+        align-items: center;
+        width: 100%;
+        justify-content: flex-start; /* Alinea logo a la izquierda */
     }
 
     .dashboard-header-glass h1 {
-        font-size: 1.6em; 
+        font-size: 1.5em; /* Título más pequeño */
     }
 
     .academy-logo-glass {
-        height: 35px;
+        height: 30px; /* Logo más pequeño */
     }
-
+    
     .logout-button-glass {
-        width: 100%;
-        max-width: 250px; 
-        font-size: 0.9em;
+        width: 100%; /* El botón ocupa todo el ancho */
+        font-size: 0.85em;
     }
 
     /* Ajustes generales de las tarjetas */
     .info-card-glass,
     .balance-card-glass,
     .history-section-glass {
-        padding: 20px;
+        padding: 15px; /* Menos padding */
         gap: 8px;
     }
     
-    .info-card-glass p {
-        font-size: 1em;
+    /* 🔑 FIX CLAVE: FUERZA LA INFORMACIÓN DEL ESTUDIANTE A APILARSE */
+    .student-details-grid p { /* Selecciona los <p> dentro del nuevo grid */
+        flex-direction: column; /* Apila el label y el detalle */
+        align-items: flex-start;
+        font-size: 0.9em; /* Texto un poco más pequeño */
+        margin-bottom: 5px;
+    }
+    .info-card-glass p svg {
+        margin-bottom: 5px;
+    }
+    .info-label-glass {
+        font-weight: 600;
+        margin-bottom: 2px;
     }
     
     .student-detail-glass {
         font-size: 1.1em; 
-    }
-
-    .total-saldo-title-glass {
-        font-size: 1.2em;
+        font-weight: 700;
+        /* Asegura que no se desborde */
+        word-break: break-word; 
     }
 
     .saldo-amount-glass {
-        font-size: 2.5em; 
+        font-size: 2.2em; /* Cantidad de saldo más pequeña */
     }
     
     .history-title-glass {
-        font-size: 1.5em;
+        font-size: 1.4em;
     }
-
+    
     /* Gestión de la tabla en móviles (permite scroll horizontal) */
+    .history-section-glass {
+        overflow-x: auto; 
+    }
+    
     .payments-table-glass th,
     .payments-table-glass td {
-        font-size: 0.8em; /* Reducción de fuente para las celdas */
-        padding: 8px 5px; /* Menos padding */
+        font-size: 0.75em; 
+        padding: 8px 5px; 
     }
 
     .payments-table-glass th {
-        /* CRUCIAL: Evita que las cabeceras se envuelvan, obligando el scroll */
         white-space: nowrap; 
-        font-size: 0.75em; /* Aún más pequeño para la cabecera */
-    }
-    
-    .history-section-glass {
-        overflow-x: auto; 
+        font-size: 0.75em;
     }
 }

@@ -114,7 +114,7 @@ export default function DashboardPage() {
           </div>
         <button 
           onClick={() => navigate('/login')} 
-          className="logout-button-glass" /* CLASE CORREGIDA */
+          className="logout-button-glass" /* CLASE CORREGIDA (Error de sintaxis corregido) */
         >
           <FaLock style={{ marginRight: '8px' }}/> Cerrar Sesión
         </button>
@@ -122,27 +122,29 @@ export default function DashboardPage() {
       
       <div className="info-card-glass"> {/* CLASE CORREGIDA */}
           {/* INFORMACIÓN DEL ESTUDIANTE */}
-          <p>
-            <FaUserCircle style={{ marginRight: '10px' }} /> 
-            <span className="info-label-glass">Estudiante:</span> {/* CLASE CORREGIDA */}
-            <span className="student-detail-glass">{student.nombre} {student.apellido}</span> {/* CLASE CORREGIDA */}
-          </p>
-          <p>
-            <FaDollarSign style={{ marginRight: '10px' }} /> 
-            <span className="info-label-glass">Código Único:</span> {/* CLASE CORREGIDA */}
-            <span className="student-detail-glass">{student.id}</span> {/* CLASE CORREGIDA */}
-          </p>
+          <div className="student-details-grid"> {/* NUEVO CONTENEDOR PARA MOBILE */}
+            <p>
+              <FaUserCircle style={{ marginRight: '10px' }} /> 
+              <span className="info-label-glass">Estudiante:</span> {/* CLASE CORREGIDA */}
+              <span className="student-detail-glass">{student.nombre} {student.apellido}</span> {/* CLASE CORREGIDA */}
+            </p>
+            <p>
+              <FaDollarSign style={{ marginRight: '10px' }} /> 
+              <span className="info-label-glass">Código Único:</span> {/* CLASE CORREGIDA */}
+              <span className="student-detail-glass">{student.id}</span> {/* CLASE CORREGIDA */}
+            </p>
+          </div>
       </div>
 
       {/* PANEL DE SALDO TOTAL */}
       <div className="balance-card-glass"> {/* CLASE CORREGIDA */}
           <h2 className="total-saldo-title-glass"><FaMoneyBillWave style={{ marginRight: '10px' }} /> Saldo Total Pendiente</h2> {/* CLASE CORREGIDA */}
           {hasPending ? (
-              <p className="saldo-amount-glass pending-amount-glass"> {/* CLASES CORREGIDAS */}
+              <p className="saldo-amount-glass pending-amount-glass"> {/* CLASE CORREGIDA */}
                   {formattedTotalPending}
               </p>
           ) : (
-              <p className="saldo-amount-glass paid-amount-glass"> {/* CLASES CORREGIDAS */}
+              <p className="saldo-amount-glass paid-amount-glass"> {/* CLASE CORREGIDA */}
                   ¡CERO ADEUDO!
               </p>
           )}
